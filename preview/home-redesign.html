@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>河小智 · 首页改版样式预览</title>
+<style>
+  :root{
+    --bg:#F5F7FB;
+    --card:#FFFFFF;
+    --ink:#101828;
+    --ink-2:#344054;
+    --muted:#667085;
+    --muted-2:#98A2B3;
+    --line:#EAEFF7;
+    --line-2:#E3EAF4;
+    --blue:#1D4ED8;
+    --blue-soft:#EDF3FF;
+    --teal:#0F9488;
+    --teal-soft:#E9FBF6;
+    --gold:#B7790B;
+    --gold-soft:#FFF6E4;
+    --violet:#6D28D9;
+    --violet-soft:#F3EEFF;
+    --rose:#BE123C;
+    --rose-soft:#FFF0F3;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
+    --shadow-hi:0 2px 6px rgba(16,24,40,.06),0 18px 40px rgba(16,24,40,.10);
+    --font:"Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:
+      radial-gradient(900px 420px at 88% -10%, rgba(37,99,235,.07), transparent 60%),
+      radial-gradient(720px 380px at 4% 0%, rgba(20,184,166,.06), transparent 62%),
+      var(--bg);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:30px 28px 70px;}
+
+  /* ---------- 顶部品牌条 ---------- */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:34px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .logo{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#1D4ED8,#2563EB 55%,#14B8A6);
+    box-shadow:0 10px 22px rgba(29,78,216,.26);color:#fff;
+  }
+  .brand b{display:block;font-size:19px;letter-spacing:.02em;line-height:1.1;}
+  .brand small{display:block;font-size:10px;color:var(--muted-2);letter-spacing:.16em;margin-top:4px;font-weight:600;}
+  .top nav{display:flex;align-items:center;gap:4px;}
+  .top nav a{
+    padding:7px 13px;border-radius:9px;font-size:13px;font-weight:640;color:var(--ink-2);
+    text-decoration:none;transition:.16s;
+  }
+  .top nav a:hover{background:#fff;color:var(--blue);}
+  .top nav a.on{background:#fff;color:var(--blue);box-shadow:0 1px 2px rgba(16,24,40,.05);}
+  .avatar{
+    width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#0F2A5C,#0E7490);color:#fff;font-size:13px;font-weight:800;
+  }
+
+  /* ---------- 顶部面板（本区块的容器框） ---------- */
+  .hero-panel{
+    position:relative;overflow:hidden;
+    padding:32px 34px 26px;margin-bottom:26px;
+    border:1px solid var(--line);
+    border-radius:26px;
+    background:
+      radial-gradient(780px 300px at 90% -32%, rgba(37,99,235,.10), transparent 62%),
+      radial-gradient(560px 260px at 0% -18%, rgba(20,184,166,.09), transparent 60%),
+      linear-gradient(180deg,#FFFFFF 0%,#FBFDFF 100%);
+    box-shadow:0 1px 2px rgba(16,24,40,.04),0 24px 56px -34px rgba(16,24,40,.26);
+  }
+  .hero-panel::after{
+    content:"";position:absolute;inset:0;border-radius:26px;pointer-events:none;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+  }
+  .hero-panel > *{position:relative;z-index:1;}
+
+  /* ---------- 标题区 ---------- */
+  .head{margin-bottom:0;}
+  .head .kicker{
+    display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:750;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;
+  }
+  .head .kicker i{width:5px;height:5px;border-radius:50%;background:var(--blue);}
+  .head h1{margin:0;font-size:30px;line-height:1.28;font-weight:800;letter-spacing:-.02em;}
+  .head h1 span{
+    background:linear-gradient(120deg,#1D4ED8,#0EA5A4);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .head p{margin:9px 0 0;font-size:13.5px;color:var(--muted);line-height:1.7;max-width:640px;}
+
+  /* ---------- 搜索 ---------- */
+  .search{
+    display:flex;align-items:center;gap:10px;margin:22px 0 0;padding:6px 6px 6px 16px;
+    background:#fff;border:1px solid var(--line-2);border-radius:14px;box-shadow:var(--shadow);
+    transition:.18s;
+  }
+  .search:focus-within{border-color:#BBD0F7;box-shadow:0 0 0 4px rgba(37,99,235,.09),var(--shadow);}
+  .search svg{flex:0 0 auto;color:var(--muted-2);}
+  .search input{
+    flex:1;border:0;outline:0;background:transparent;font-family:var(--font);
+    font-size:14px;color:var(--ink);padding:10px 0;min-width:0;
+  }
+  .search input::placeholder{color:var(--muted-2);}
+  .search button{
+    border:0;cursor:pointer;padding:10px 18px;border-radius:10px;color:#fff;
+    background:linear-gradient(135deg,#1D4ED8,#2563EB);font-family:var(--font);
+    font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;
+    box-shadow:0 8px 18px rgba(29,78,216,.22);
+  }
+  .search button:hover{filter:brightness(1.04);}
+
+  /* ---------- 指标 ---------- */
+  .metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+    margin:24px 0 0;padding-top:22px;border-top:1px dashed var(--line-2);
+  }
+  .metric{
+    display:flex;align-items:center;gap:11px;padding:13px 15px;background:#fff;
+    border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit;
+    box-shadow:0 1px 2px rgba(16,24,40,.03),0 12px 26px -20px rgba(16,24,40,.38);transition:.18s;
+  }
+  .metric:hover{border-color:#CFE0FA;box-shadow:0 10px 22px rgba(16,24,40,.07);transform:translateY(-1px);}
+  .metric i{
+    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;
+    font-style:normal;
+  }
+  .metric:nth-child(1) i{background:var(--blue-soft);color:var(--blue);}
+  .metric:nth-child(2) i{background:var(--teal-soft);color:var(--teal);}
+  .metric:nth-child(3) i{background:var(--gold-soft);color:var(--gold);}
+  .metric:nth-child(4) i{background:var(--violet-soft);color:var(--violet);}
+  .metric b{display:block;font-size:17px;font-weight:800;line-height:1;letter-spacing:-.01em;}
+  .metric b em{font-style:normal;font-size:10px;font-weight:650;color:var(--muted-2);margin-left:2px;}
+  .metric span{display:block;font-size:10.5px;color:var(--muted);margin-top:5px;}
+
+  /* ---------- 分类页签 ---------- */
+  .tabs{
+    display:flex;align-items:center;gap:6px;padding-bottom:12px;margin-bottom:20px;
+    border-bottom:1px solid var(--line);overflow-x:auto;
+  }
+  .tabs button{
+    border:0;background:transparent;cursor:pointer;font-family:var(--font);
+    padding:7px 13px;border-radius:9px;font-size:13px;font-weight:650;color:var(--muted);
+    white-space:nowrap;transition:.16s;
+  }
+  .tabs button:hover{background:#fff;color:var(--blue);}
+  .tabs button.on{background:var(--blue);color:#fff;box-shadow:0 8px 16px rgba(29,78,216,.2);}
+  .tabs .count{margin-left:auto;font-size:11px;color:var(--muted-2);white-space:nowrap;padding-left:12px;}
+
+  /* ---------- 卡片网格 ---------- */
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+  .card{
+    display:flex;gap:14px;padding:18px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);text-decoration:none;color:inherit;
+    box-shadow:0 1px 2px rgba(16,24,40,.03);transition:box-shadow .2s,border-color .2s,transform .2s;
+    position:relative;overflow:hidden;
+  }
+  .card::after{
+    content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+    box-shadow:inset 0 0 0 1px transparent;transition:.2s;
+  }
+  .card:hover{box-shadow:var(--shadow-hi);border-color:#DEE7F5;transform:translateY(-2px);}
+  .card .ico{
+    width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+  }
+  .card .ico.blue{background:var(--blue-soft);color:var(--blue);}
+  .card .ico.teal{background:var(--teal-soft);color:var(--teal);}
+  .card .ico.gold{background:var(--gold-soft);color:var(--gold);}
+  .card .ico.violet{background:var(--violet-soft);color:var(--violet);}
+  .card .ico.rose{background:var(--rose-soft);color:var(--rose);}
+  .card .txt{min-width:0;flex:1;}
+  .card h3{
+    margin:0;font-size:14.5px;font-weight:750;letter-spacing:-.01em;color:var(--ink);
+    display:flex;align-items:center;gap:7px;
+  }
+  .card .new{
+    font-size:9px;font-weight:800;letter-spacing:.06em;padding:2px 6px;border-radius:5px;
+    background:#EEF4FF;color:var(--blue);border:1px solid #D9E6FB;
+  }
+  .card p{margin:7px 0 0;font-size:12px;line-height:1.7;color:var(--muted);}
+  .card .foot{
+    display:flex;align-items:center;gap:6px;margin-top:11px;font-size:10.5px;
+    color:var(--muted-2);line-height:1.4;
+  }
+  .card .foot svg{flex:0 0 auto;}
+  .card .go{
+    position:absolute;right:16px;top:16px;color:var(--muted-2);opacity:0;
+    transform:translateX(-3px);transition:.2s;
+  }
+  .card:hover .go{opacity:1;transform:none;color:var(--blue);}
+
+  .grid .wide{grid-column:span 2;}
+
+  /* ---------- 底部提示 ---------- */
+  .hint{
+    display:flex;align-items:flex-start;gap:9px;margin-top:26px;padding:13px 15px;
+    background:#fff;border:1px dashed #DCE6F5;border-radius:13px;
+    font-size:11.5px;line-height:1.7;color:var(--muted);
+  }
+  .hint svg{flex:0 0 auto;margin-top:1px;color:var(--blue);}
+
+  @media (max-width:900px){
+    .wrap{padding:20px 16px 50px;}
+    .hero-panel{padding:24px 20px 20px;border-radius:20px;}
+    .head h1{font-size:24px;}
+    .metrics{grid-template-columns:repeat(2,1fr);}
+    .grid{grid-template-columns:1fr;}
+    .grid .wide{grid-column:span 1;}
+    .top nav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="7" width="16" height="12" rx="4"/><path d="M12 3v4"/><circle cx="12" cy="3" r="1.4" fill="currentColor" stroke="none"/>
+          <circle cx="9" cy="12.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="12.5" r="1.2" fill="currentColor" stroke="none"/>
+          <path d="M9.6 15.6c1.5 1.4 3.3 1.4 4.8 0"/>
+        </svg>
+      </div>
+      <div><b>河小智</b><small>HENAN UNIVERSITY · AI CAMPUS</small></div>
+    </div>
+    <nav>
+      <a href="#" class="on">首页</a>
+      <a href="#">智能问答</a>
+      <a href="#">办事流程</a>
+      <a href="#">校园活动</a>
+      <a href="#">我的河大</a>
+    </nav>
+    <div class="avatar">满</div>
+  </div>
+
+  <section class="hero-panel">
+  <div class="head">
+    <div class="kicker"><i></i>AI CAMPUS · 一站式校园智能体</div>
+    <h1>下午好，小满。<br/>今天想让<span>河小智</span>帮你做点什么？</h1>
+    <p>政策、办事、活动、课表都在这里。提一句需求，AI 帮你把流程、材料与地点一次说清。</p>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="试试问我：学生证丢了怎么办？/ 这周有哪些活动可以报名？" aria-label="提问"/>
+      <button type="button">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+        问问河小智
+      </button>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <a class="metric" href="#">
+      <i><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2V5Z"/><path d="M22 5h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7V5Z"/></svg></i>
+      <div><b>4<em>节</em></b><span>今日课程 · 下一节 10:10</span></div>
+    </a>
+    <a class="metric" href="#">
+      <i><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></i>
+      <div><b>4<em>项</em></b><span>待办事项 · 已完成 0/4</span></div>
+    </a>
+    <a class="metric" href="#">
+      <i><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 3v3M16 3v3M3 9.5h18"/></svg></i>
+      <div><b>4<em>场</em></b><span>本周活动 · 2 场即将截止</span></div>
+    </a>
+    <a class="metric" href="#">
+      <i><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></i>
+      <div><b>3<em>本</em></b><span>图书借阅 · 2 本 11/12 到期</span></div>
+    </a>
+  </div>
+  </section>
+
+  <div class="tabs" id="tabs">
+    <button class="on" data-cat="全部">全部</button>
+    <button data-cat="智能问答">智能问答</button>
+    <button data-cat="办事流程">办事流程</button>
+    <button data-cat="校园活动">校园活动</button>
+    <button data-cat="个人事务">个人事务</button>
+    <button data-cat="学习成长">学习成长</button>
+    <span class="count" id="count">共 8 个入口</span>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <a class="card" data-cat="智能问答" href="#">
+      <span class="ico blue">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>
+      </span>
+      <span class="txt">
+        <h3>智能问答 <span class="new">AI</span></h3>
+        <p>用大白话问政策、流程、生活问题，答案带办理步骤与制度依据，可查看官方原文。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4"/></svg>
+          7 × 24 在线 · 已载入 22 篇制度
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="办事流程" href="#">
+      <span class="ico teal">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h5a3 3 0 0 0 3-3V8a3 3 0 0 1 3-3h-1"/><path d="M6 17V7a2 2 0 0 1 2-2h2"/></svg>
+      </span>
+      <span class="txt">
+        <h3>办事流程导航</h3>
+        <p>从「要办什么」到「怎么办」，材料清单、办理地点、联系电话一次讲清。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 3v3M16 3v3M3 9.5h18"/></svg>
+          18 项高频流程 · 全部标注依据
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="校园活动" href="#">
+      <span class="ico gold">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"/></svg>
+      </span>
+      <span class="txt">
+        <h3>校园活动</h3>
+        <p>社团、讲座、音乐节与夜跑。选一场喜欢的，和同频的人一起出发。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/></svg>
+          本周 4 场 · 已报名 0 场
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="个人事务" href="#">
+      <span class="ico violet">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+      </span>
+      <span class="txt">
+        <h3>个人事务中心</h3>
+        <p>待办、课表、报修进度与校园服务入口，一个页面收齐，不用来回找系统。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>
+          今日 4 项待办 · 报修已派单
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="学习成长" href="#">
+      <span class="ico blue">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+      </span>
+      <span class="txt">
+        <h3>个人成长档案</h3>
+        <p>课程、活动、志愿与荣誉自动沉淀，四年的每一步都能被看见。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="m8.5 12-2 9 5.5-3 5.5 3-2-9"/></svg>
+          5 枚徽章 · 26h 志愿时长
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="智能问答" href="#">
+      <span class="ico teal">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
+      </span>
+      <span class="txt">
+        <h3>制度原文库</h3>
+        <p>逐篇查看文号、发布部门、条款与摘录，回答里的每条依据都能溯源。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6"/></svg>
+          22 篇制度 · 支持跳转官方原文
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="个人事务" href="#">
+      <span class="ico gold">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.1L3 17.5V21h3.5l6.1-6.1a4 4 0 0 0 5.1-5.6l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
+      </span>
+      <span class="txt">
+        <h3>校园报修</h3>
+        <p>宿舍水电、门锁与网络故障在线报修，进度实时可见，后勤 24 小时响应。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          最近一单：维修中 · 预计今天完成
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="card" data-cat="学习成长" href="#">
+      <span class="ico rose">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M8 8h7M8 12h5"/></svg>
+      </span>
+      <span class="txt">
+        <h3>空闲教室与自习位</h3>
+        <p>按校区、时间段筛出空教室，图书馆座位一键预约，不用一间间找。</p>
+        <span class="foot">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          金明校区 · 当前 27 间可用
+        </span>
+      </span>
+      <span class="go"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+    </a>
+
+  </div>
+
+  <div class="hint">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg>
+    <span>这是「首页改版」的独立样式预览：更接近智能体广场的轻量卡片风（大留白、双列、单行描述），
+      仅用于对比观感，暂未应用到正式页面。看中之后再改首页即可。</span>
+  </div>
+
+</div>
+
+<script>
+  const tabs = document.getElementById('tabs');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const count = document.getElementById('count');
+  let cat = '全部';
+
+  function apply(){
+    let shown = 0;
+    cards.forEach(card => {
+      const hit = cat === '全部' || card.dataset.cat === cat;
+      card.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    count.textContent = '共 ' + shown + ' 个入口';
+  }
+
+  tabs.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    cat = btn.dataset.cat;
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === btn));
+    apply();
+  });
+
+  document.getElementById('q').addEventListener('input', e => {
+    const kw = e.target.value.trim();
+    if (!kw) { apply(); return; }
+    let shown = 0;
+    cards.forEach(card => {
+      const hit = card.innerText.includes(kw);
+      card.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    count.textContent = '匹配 ' + shown + ' 个入口';
+  });
+</script>
+</body>
+</html>

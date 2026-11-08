@@ -1,0 +1,18 @@
+# 本地运行依赖（体积大，按 requirements.txt 安装）
+.deps/
+
+# 账号与用户数据
+.data/
+
+# 密钥
+.env
+.streamlit/secrets.toml
+
+# 缓存与临时文件
+__pycache__/
+*.pyc
+.tmp/
+.vscode/
+.workbuddy/
+.DS_Store
+Thumbs.db

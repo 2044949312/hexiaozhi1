@@ -1,0 +1,27 @@
+[global]
+developmentMode = false
+
+[theme]
+base = "light"
+primaryColor = "#1D4ED8"
+backgroundColor = "#F4F7FB"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#0F1B33"
+font = "sans serif"
+
+[server]
+# 监听所有网卡：局域网 / 公网用「本机 IP:8501」就能访问。
+# 只写 127.0.0.1 时，只有本机能打开。
+address = "0.0.0.0"
+port = 8501
+headless = true
+runOnSave = true
+fileWatcherType = "auto"
+maxUploadSize = 50
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = "none"
