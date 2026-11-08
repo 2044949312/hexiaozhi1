@@ -16,3 +16,5 @@ __pycache__/
 .workbuddy/
 .DS_Store
 Thumbs.db
+tools/_edge_profile*/
+tools/_tmp_html_*
